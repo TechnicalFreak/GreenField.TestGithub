@@ -9,4 +9,4 @@ jobs:
   Release:
     runs-on: ubuntu-latest
     steps:
-      - run: echo"Hello Frank"
+      - run: echo "Hello Frank"
