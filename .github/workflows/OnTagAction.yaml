@@ -10,5 +10,11 @@ on:
 jobs:
   Release:    
     runs-on: ubuntu-latest
-    steps:
+    steps:      
+      - name: Print Variables
+        run: |
+          echo "GitHub Event Name: $GITHUB_EVENT_NAME"
+          echo "Repository: $GITHUB_REPOSITORY"
+          echo "SHA: $GITHUB_SHA"
+          echo "Ref: $GITHUB_REF"
       - run: echo "Hello Frank"
