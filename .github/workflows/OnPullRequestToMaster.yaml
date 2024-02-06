@@ -8,7 +8,7 @@ on:
 
 env:
   RULES_VERSION: 1
-  SPECTRAL_SECURITY_LOCATION: https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/$RULES_VERSION/spectral-security.yml
+  SPECTRAL_SECURITY_LOCATION: https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/${{RULES_VERSION}}/spectral-security.yml
   OPEN_API_FILE: my-api.yaml
 
 jobs:
