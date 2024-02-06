@@ -7,7 +7,7 @@ on:
 
 jobs:
   checks:    
-    uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@10
+    uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@11
     with:
       rule-version: 11
       openapi-file-path: 'my-api.yaml'
