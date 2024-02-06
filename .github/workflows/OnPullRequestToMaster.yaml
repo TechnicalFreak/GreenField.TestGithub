@@ -6,6 +6,11 @@ on:
     branches:
       - master
 
+env:
+  RULES_VERSION: 1
+  SPECTRAL_SECURITY_LOCATION: https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/$RULES_VERSION/spectral-security.yml
+  OPEN_API_FILE: my-api.yaml
+
 jobs:
   OWASP-CHECK:    
     runs-on: ubuntu-latest
@@ -19,5 +24,5 @@ jobs:
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: npm install --save -D @stoplight/spectral-owasp-ruleset
-      - run: wget https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/master/spectral-security.yml -O .spectral.yml
-      - run: spectral lint my-api.yaml
+      - run: wget $SPECTRAL_SECURITY_LOCATION -O .spectral.yml
+      - run: spectral lint $OPEN_API_FILE
