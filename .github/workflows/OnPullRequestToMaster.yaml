@@ -10,6 +10,6 @@ env:
 
 jobs:
   check:
-    uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@14
+    uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@15
     with:
       openapi-file-path: $OPENAPI_FILE_PATH
