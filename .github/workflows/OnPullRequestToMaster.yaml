@@ -5,11 +5,8 @@ on:
     branches:
       - master
 
-env:
-  OPENAPI_FILE_PATH: my-api.yaml
-
 jobs:
   check:
-    uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@16
+    uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@17
     with:
-      openapi-file-path: $OPENAPI_FILE_PATH
+      openapi-file-path: my-api.yaml
