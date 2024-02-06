@@ -1,0 +1,23 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  OWASP-CHECK:    
+    runs-on: ubuntu-latest
+    steps:      
+      - name: Print GitHub Action Variables
+        run: |
+          for var in $(compgen -e); do
+            echo "$var: ${!var}"
+          done
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: npm install -g @stoplight/spectral-cli
+      - run: npm install --save -D @stoplight/spectral-owasp-ruleset
+      - run: wget https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/master/spectral-security.yml -O .spectral.yml
+      - run: spectral lint my-api.yaml
