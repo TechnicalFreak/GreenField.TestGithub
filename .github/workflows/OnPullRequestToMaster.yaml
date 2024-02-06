@@ -20,7 +20,7 @@ jobs:
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: npm install --save -D @stoplight/spectral-owasp-ruleset
-      - run: wget $SPECTRAL_SECURITY_LOCATION -O .spectral.yml
+      - run: wget $SPECTRAL_OWASP_RULESET_LOCATION -O .spectral.yml
       - run: spectral lint $OPEN_API_FILE
 
   OAS-CHECK:    
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: npm install --save -D @stoplight/spectral-owasp-ruleset
-      - run: wget $SPECTRAL_OAS_LOCATION -O .spectral.yml
+      - run: wget $SPECTRAL_OAS_RULESET_LOCATION -O .spectral.yml
       - run: spectral lint $OPEN_API_FILE
 
   STYLEGUIDE-CHECK:    
@@ -40,5 +40,5 @@ jobs:
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: npm install --save -D @stoplight/spectral-owasp-ruleset
-      - run: wget $SPECTRAL_STYLEGUIDE_LOCATION -O .spectral.yml
+      - run: wget $SPECTRAL_STYLEGUIDE_RULESET_LOCATION -O .spectral.yml
       - run: spectral lint $OPEN_API_FILE
