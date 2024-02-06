@@ -1,44 +1,16 @@
 name: OpenApi Checks
-run-name: ${{ github.actor }} opens a pull-request on master 🚀
 
 on:
   pull_request:
     branches:
       - master
 
-env:
-  SPECTRAL_OWASP_RULESET_LOCATION: https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/${{vars.OPENAPI_RULES_VERSION}}/spectral-security.yml
-  SPECTRAL_OAS_RULESET_LOCATION: https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/${{vars.OPENAPI_RULES_VERSION}}/spectral-oas.yml
-  SPECTRAL_STYLEGUIDE_RULESET_LOCATION: https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/${{vars.OPENAPI_RULES_VERSION}}/spectral-styleguide.yml
-  OPEN_API_FILE: my-api.yaml
-
 jobs:
   OWASP-CHECK:    
     runs-on: ubuntu-latest
-    steps:      
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm install -g @stoplight/spectral-cli
-      - run: npm install --save -D @stoplight/spectral-owasp-ruleset
-      - run: wget $SPECTRAL_OWASP_RULESET_LOCATION -O .spectral.yml
-      - run: spectral lint $OPEN_API_FILE
+    steps:   
+      - uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@5
+        with:
+          rule-version: 2
+          openapi-file-path: 'my-api.yaml'
 
-  OAS-CHECK:    
-    runs-on: ubuntu-latest
-    steps:      
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm install -g @stoplight/spectral-cli
-      - run: npm install --save -D @stoplight/spectral-owasp-ruleset
-      - run: wget $SPECTRAL_OAS_RULESET_LOCATION -O .spectral.yml
-      - run: spectral lint $OPEN_API_FILE
-
-  STYLEGUIDE-CHECK:    
-    runs-on: ubuntu-latest
-    steps:      
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm install -g @stoplight/spectral-cli
-      - run: npm install --save -D @stoplight/spectral-owasp-ruleset
-      - run: wget $SPECTRAL_STYLEGUIDE_RULESET_LOCATION -O .spectral.yml
-      - run: spectral lint $OPEN_API_FILE
