@@ -7,10 +7,8 @@ on:
 
 jobs:
   checks:    
-    runs-on: ubuntu-latest
-    steps:   
-      - uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@5
-        with:
-          rule-version: 2
-          openapi-file-path: 'my-api.yaml'
+    uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@10
+    with:
+      rule-version: 11
+      openapi-file-path: 'my-api.yaml'
 
