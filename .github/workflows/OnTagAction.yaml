@@ -1,26 +1,17 @@
-name: TestAction
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 
 on:
   push:
     branches:
-      - master
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+       - 'master'
 
 jobs:
   Release:    
     runs-on: ubuntu-latest
     steps:      
-      - name: Print Variables
-        run: |
-          echo "GitHub Event Name: $GITHUB_EVENT_NAME"
-          echo "Repository: $GITHUB_REPOSITORY"
-          echo "SHA: $GITHUB_SHA"
-          echo "Ref: $GITHUB_REF"
       - name: Print GitHub Action Variables
         run: |
           for var in $(compgen -e); do
             echo "$var: ${!var}"
           done
-
-      - run: echo "Hello Frank"

@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: Virenscanner API
+  version: 1.0.0
+
+servers:
+  - url: http://
+    description: TestServer
+    
+tags: 
+  - name: Health
+    description: HealthCheck
+  - name: Scan
+    description: File-Scanning
+    
+paths:
+  /health:
+    get:
+      tags:
+        - Health
+      summary: Check the health of the service
+      description: |
+        Perform a health check to verify the service's status.
+      responses:
+        '200':
+          description: Service is healthy
+        '503':
+          description: Service is unhealthy
+
+  /scan:
+    post:
+      tags: 
+        - Scan
+      summary: Scan a file for malware
+      description: |
+        Upload a file for scanning. Returns the scan result.
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful scan
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+                    enum: [clean, infected]
+                  details:
+                    type: string
+        '400':
+          description: Bad Request (e.g., invalid file format)
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
