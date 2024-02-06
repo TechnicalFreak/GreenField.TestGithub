@@ -9,7 +9,7 @@ env:
   OPENAPI_FILE_PATH: my-api.yaml
 
 jobs:
-  steps:
+  check:
     uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@14
     with:
       openapi-file-path: $OPENAPI_FILE_PATH
