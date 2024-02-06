@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  openapi-file-path: my-api.yaml
+  OPENAPI_FILE_PATH: my-api.yaml
 
 jobs:
   OWASP-CHECK:    
@@ -19,7 +19,7 @@ jobs:
       - run: npm install -g @stoplight/spectral-cli
       - run: npm install --save -D @stoplight/spectral-owasp-ruleset
       - run: wget $SPECTRAL_OWASP_RULESET_LOCATION -O .spectral.yml
-      - run: spectral lint $openapi-file-path
+      - run: spectral lint $OPENAPI_FILE_PATH
 
   OAS-CHECK:    
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: wget $SPECTRAL_OAS_RULESET_LOCATION -O .spectral.yml
-      - run: spectral lint $openapi-file-path
+      - run: spectral lint $OPENAPI_FILE_PATH
 
   STYLEGUIDE-CHECK:    
     runs-on: ubuntu-latest
@@ -41,4 +41,4 @@ jobs:
       - uses: actions/setup-node@v3
       - run: npm install -g @stoplight/spectral-cli
       - run: wget $SPECTRAL_STYLEGUIDE_RULESET_LOCATION -O .spectral.yml
-      - run: spectral lint $openapi-file-path
+      - run: spectral lint $OPENAPI_FILE_PATH
