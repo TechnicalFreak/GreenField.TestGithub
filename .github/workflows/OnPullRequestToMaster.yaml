@@ -9,7 +9,7 @@ jobs:
   OWASP-CHECK:    
     runs-on: ubuntu-latest
     steps:   
-      - uses: https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/3/github/actions/check-openapi/action.yml@3
+      - uses: TechnicalFreak/fop.openapi-rules/.github/workflows/check-openapi.yaml@5
         with:
           rule-version: 2
           openapi-file-path: 'my-api.yaml'
