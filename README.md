@@ -1,10 +1,8 @@
 # TestGithub
 
-if: github.ref == 'refs/tags/v[0-9]+.[0-9]+.[0-9]+'
+Dieses Projekt verwendet beim Erstellen eines PullRequests auf den Master-Branch den OpenApiCheck, mit den selbst definierten Rulesets https://github.com/TechnicalFreak/fop.openapi-rules
 
-
-## OASDIFF
-https://github.com/TechnicalFreak/TestGithub/blob/v1.0.10/my-api.yaml
-
-spectral security owasp:
-wget https://raw.githubusercontent.com/TechnicalFreak/fop.openapi-rules/master/spectral-security.yml -O .spectral.yml
+Es soll dargestellt werden, dass 
+- ein PullRequest für eine Swagger bzw. OpenApi-Datei erstellt
+- Tests automatisch ausgeführt
+- und die Änderungen bei Erfolg gemerged werden können
